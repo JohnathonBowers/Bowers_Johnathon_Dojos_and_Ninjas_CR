@@ -1,0 +1,16 @@
+* {
+    border: 0px;
+    outline: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.btn-primary:hover {
+    background-color: #6EA8FD;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #FFD969;
+    color: black;
+}

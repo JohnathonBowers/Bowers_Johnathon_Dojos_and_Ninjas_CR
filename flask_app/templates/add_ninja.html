@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ninja</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar bg-light">
+        <div class="container d-flex justify-content-start">
+            <a class="navbar-brand" href="/dojos">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
+                </svg>
+                Dojos & Ninjas
+            </a>
+            <div class="navbar-nav">
+                <a href="/dojos" class="nav-link">Home</a>
+            </div>
+        </div>
+    </nav>
+    <div class="row justify-content-center my-4">
+        <div class="container border border-secondary text-dark justify-content-start col-lg-4 p-4">
+            <h2 class="mb-4">Add a Ninja</h2>
+            <form action="/ninjas/add" method="post" class="justify-content-start">
+                <label for="dojo" class="form-label my-auto mb-2">Dojo:</label>
+                <select class="form-select mb-4" name="dojo_id" id="dojo">
+                    <option selected>Select Dojo</option>
+                    {% for dojo in dojos %}
+                    <option value={{dojo.id}}>{{dojo.name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="fname" class="form-label mb-2">First Name:</label>
+                <input name="first_name" id="fname" type="text" class="form-control mb-4">
+                <label for="lname" class="form-label mb-2">Last Name:</label>
+                <input name="last_name" id="lname" type="text" class="form-control mb-4">
+                <label for="age" class="form-label mb-2">Age:</label>
+                <input name="age" id="age" type="text" class="form-control mb-4">
+                <button class="btn btn-warning btn-outline-dark">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
